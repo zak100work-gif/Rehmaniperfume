@@ -4,15 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rehmani Perfume | Luxury Store</title>
-    
-    <!-- This links your logo icon -->
     <link rel="icon" type="image/x-icon" href="index.htmll">
+    <style>
+        body {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            background-color: #0b0c10;
+            color: #c5a880;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #1f2833;
+            padding: 30px 20px;
+            border-bottom: 2px solid #c5a880;
+            position: relative;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .subtitle {
+            font-style: italic;
+            color: #66fcf1;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        /* 🛒 Live Shopping Cart Counter Style */
+        .cart-status {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 1.2rem;
+            background: #c5a880;
+            color: #0b0c10;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(197, 168, 128, 0.3);
+            transition: transform 0.2s ease;
+        }
+        .cart-bump {
+            transform: scale(1.2);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .perfume-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #1f2833;
+            border: 1px solid #c5a880;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        .bottle-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 15px 0;
+        }
+        .btn {
+            background-color: #c5a880;
+            color: #0b0c10;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #fff;
+            color: #0b0c10;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 🛍️ Your Website Content Starts Here -->
-    <h1>Rehmaniperfume</h1>
-    <p>A luxury perfume e-commerce store featuring dynamic scent discovery, an interactive shopping cart, and a responsive premium design.</p>
+    <header>
+        <h1>Rehmani Perfume</h1>
+        <p class="subtitle">🛍️ Luxury Fragrances</p>
+        
+        <!-- Live Counter Element -->
+        <div class="cart-status" id="cart-widget">
+            🛒 Cart: <span id="cart-count">0</span> Items
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Our Premium Collection</h2>
+        <div class="perfume-grid">
+            
+            <!-- Item 1 -->
+            <div class="card">
+                <div class="bottle-icon">🧪</div>
+                <h3>Oud Premium</h3>
+                <p>Rich, dark, and intensely smoky majestic woody blend.</p>
+                <div class="price">$120</div>
+                <button class="btn" onclick="addItemToCart('Oud Premium')">Add to Cart</button>
+            </div>
+            
+            <!-- Item 2 -->
+            <div class="card">
+                <div class="bottle-icon">⚱️</div>
+                <h3>Royal Rose</h3>
+                <p>Fresh blooming roses mixed with soft white musk.</p>
+                <div class="price">$95</div>
+                <button class="btn" onclick="addItemToCart('Royal Rose')">Add to Cart</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 🧠 JavaScript Live Engine -->
+    <script>
+        let totalItems = 0;
+
+        function addItemToCart(perfumeName) {
+            // Increase total item count
+            totalItems++;
+            
+            // Update the counter text live on the screen
+            const countLabel = document.getElementById('cart-count');
+            countLabel.innerText = totalItems;
+            
+            // Add a visual pop animation effect to the cart widget
+            const cartWidget = document.getElementById('cart-widget');
+            cartWidget.classList.add('cart-bump');
+            
+            // Remove the pop animation after 200 milliseconds so it can flash next time
+            setTimeout(() => {
+                cartWidget.classList.remove('cart-bump');
+            }, 200);
+
+            console.log(perfumeName + " added to system cart container.");
+        }
+    </script>
 
 </body>
 </html>
